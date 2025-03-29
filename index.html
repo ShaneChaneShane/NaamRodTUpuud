@@ -11,16 +11,31 @@
 <body>
     <h1>Code Manipulation Game</h1>
     <div id="game-world">
-        <div id="stage1" class="stage">
-            <div id="cube1"
-                style="width: 10px; height: 20px; background-color: blue; position: relative; left: 200px; top: 30px;">
+        <div id="main-menu" class="stage" >
+            <div id="logo">
+                <h1>LOGO</h1>
             </div>
+            <div style="height: 80px;"></div>
+            <button id="new-game" onclick="nextStage()">New Game</button>
+            <button id="leaderboard" onclick="showNotice('This is not implemented yet in demo ♥')">Leaderboard</button>
+        </div>
+        <div id="stage1" class="stage">
+            <div class="vilager" id="vilager1"
+                style="width: 24px; height: 24px; background-color: blue; position: absolute;  top:300px; left:100px;">
+            </div>
+            <div class="vilager" id="vilager2"
+                style="width: 24px; height: 24px; background-color: rosybrown; position: absolute; top:300px; left:130px;">
+            </div>
+            
+            <div id="stage-game-object1" 
+            class="gameobject" 
+            style="background-color: black; width:750px; height: 50px; top:350px; left:0px">
+            </div>
+            <!-- create more div with class gameobject to make the map for user to add bridge pls-->
+            <button onclick="villagersMove()" style=" position: absolute; left: 100px; top: 30px;">Start</button>
         </div>
         <div id="stage2" class="stage">
-
-        </div>
-        <div id="stage3" class="stage">
-            asdsda
+            thanks for testing the demo!!
         </div>
 
         <div class="dialogue" id="dialogue">
@@ -36,8 +51,15 @@
             </div>
         </div>
 
-        <div class="gameOverlay">
-
+        <div class="gameOverlay" id="levelEndOverlay">
+            <div id="levelEndOverlayText">
+                <p>test I'm text</p>
+            </div>
+        </div>
+        <div class="gameOverlay" id="notice">
+            <div id="noticeText">
+                <p>test I'm text</p>
+            </div>
         </div>
     </div>
     <div style="height: 85px;"></div>
@@ -52,7 +74,6 @@
     debug
     <button onclick="showDialogue('test')">Open Dialogue Box</button>
     <button onclick="closeDialogue('test')">Close Dialogue Box</button>
-    <script src="main.js"></script>
     <script src="main.js"></script>
 </body>
 

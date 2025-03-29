@@ -1,6 +1,38 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background: rgb(1, 1, 9);
+    background: linear-gradient(0deg, rgba(1, 1, 9, 1) 0%, rgba(5, 5, 52, 1) 44%, rgba(152, 137, 121, 1) 100%);
+    font-family: "Times New Roman", Times, serif;
+    color: white;
+    position: relative;
+}
+
+button {
+    position: relative;
+    padding: 15px 25px;
+    margin: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #c9aa4f;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #3d3535;
+}
+
+button:hover {
+    background-color: #a35b2b
+}
+
+button:active {
+    background-color: #470e04;
+    box-shadow: 0 5px #3d3535;
+    transform: translateY(4px);
 }
 
 #game-world {
@@ -11,20 +43,44 @@ body {
     position: relative;
 }
 
-.gameOverlay{
+.gameOverlay {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    width:400px;
-    height: 200px;
-    background-color: rgba(200,100,0,0.5) ;
     transform: translate(-50%, -50%);
+
+    opacity: 0;
+}
+
+.gameobject {
+    position: absolute;
+    border: none;
+}
+
+#levelEndOverlay {
+    width: 400px;
+    height: 200px;
+    background-color: rgba(200, 100, 0, 0.5);
+}
+
+#notice {
+    width: 200px;
+    height: 150;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(9, 66, 131, 0.5);
+    box-shadow: #3d3535;
+}
+
+#editor {
+    border-radius: 25px;
+    padding: 10px;
 }
 
 .dialogue {
     display: none;
-    width:650px;
+    width: 650px;
     height: 200px;
     background-color: transparent;
     position: absolute;
@@ -33,38 +89,55 @@ body {
 }
 
 #dialogueSprite {
-    width:200px;
+    width: 200px;
     height: 400px;
     background-color: salmon;
     position: absolute;
     top: -210px;
     left: 0px;
 }
-#dialogueText{
+
+#dialogueText {
     position: absolute;
     top: 50%;
     left: 50%;
-    width:650px;
+    width: 650px;
     height: 180px;
     transform: translate(-50%, -50%);
     background-color: firebrick;
 }
+
 .stage {
     display: none;
-    width:750px;
+    width: 750px;
     height: 400px;
     position: absolute;
     top: 0px;
     left: 0px;
-    
+
 }
+
+#main-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centers items vertically */
+    align-items: center;
+    /* Centers items horizontally */
+    height: 100%;
+    width: 100%;
+    background-color: green;
+}
+
 #stage1 {
     background-color: aqua;
 }
-#stage2{
-    background-color: red;
+
+#stage2 {
+    background-color: plum;
 }
-#stage3{
+
+#stage3 {
     background-color: plum;
 }
 
