@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Manipulation Game</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h1>Code Manipulation Game</h1>
+    <div id="game-world">
+        <div id="stage1" class="stage">
+            <div id="cube1" style="width: 10px; height: 20px; background-color: blue; position: relative; left: 200px; top: 30px;">
+            </div>
+        </div>
+        <div id="stage2" class="stage">
+
+        </div>
+        <div class="dialogue">
+            <!-- Character dialogue -->
+            <div class="dialogueSprite">
+
+            </div>
+            <div class="dialogueText">
+
+            </div>
+            <div>
+                <!-- button to press next -->
+            </div>
+        </div>
+
+        <div class="gameOverlay">
+
+        </div>
+    </div>
+    <div style="height: 85px;"></div>
+    <textarea id="editor" placeholder="Write HTML/JS to create a component..."></textarea>
+    <button onclick="addComponent()">Add to World</button>
+    <button onclick="saveToInventory()">Save to Inventory</button>
+    <h2>Inventory</h2>
+    <div id="inventory"></div>
+    <button onclick="nextStage()">Next Stage</button>
+    <script src = "main.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
