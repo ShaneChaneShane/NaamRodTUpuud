@@ -8,7 +8,19 @@ let isOnGround = false;
 let stage = 1;
 
 let inventory = [];
-
+function showDialogue(newText){
+    const dialogueDiv = document.getElementById('dialogue');
+    dialogueDiv.style.display = 'block';
+    const dialogueTextDiv = document.getElementById('dialogueText'); // Get the div
+    const paragraph = dialogueTextDiv.querySelector('p');
+    if (paragraph) {
+        paragraph.innerText = newText; // Change the text
+    }
+}
+function closeDialogue(newText){
+    const dialogueDiv = document.getElementById('dialogue');
+    dialogueDiv.style.display = 'none';
+}
 function addComponent() {
     const code = document.getElementById('editor').value;
     const element = document.createElement('div');
@@ -38,6 +50,11 @@ function loadComponent(code) {
     document.getElementById('editor').value = code;
 }
 
+function nextStage() {
+    stage++;
+}
+
+
 function update() {
     
     document.querySelectorAll('.stage').forEach(stageDiv => {
@@ -47,10 +64,12 @@ function update() {
     if (stage == 1) {
         document.getElementById("stage1").style.display = "block";
     } else if (stage == 2) {
-        document.querySelectorAll('.dialogue').forEach(dialogueDiv => {
-            dialogueDiv.style.display = 'block';
-        });
+        // document.querySelectorAll('.dialogue').forEach(dialogueDiv => {
+        //     dialogueDiv.style.display = 'block';
+        // });
         document.getElementById("stage2").style.display = "block";
+    } else if (stage == 3){
+        document.getElementById("stage3").style.display = "block";
     }
 
 

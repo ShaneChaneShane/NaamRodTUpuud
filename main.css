@@ -32,7 +32,7 @@ body {
     left: 50px;
 }
 
-.dialogueSprite {
+#dialogueSprite {
     width:200px;
     height: 400px;
     background-color: salmon;
@@ -40,7 +40,7 @@ body {
     top: -210px;
     left: 0px;
 }
-.dialogueText{
+#dialogueText{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -63,6 +63,9 @@ body {
 }
 #stage2{
     background-color: red;
+}
+#stage3{
+    background-color: plum;
 }
 
 #editor {
