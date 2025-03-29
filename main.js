@@ -8,6 +8,8 @@ let isOnGround = false;
 let stage = 1;
 
 let inventory = [];
+
+// ---------------
 function showDialogue(newText){
     const dialogueDiv = document.getElementById('dialogue');
     dialogueDiv.style.display = 'block';
@@ -21,12 +23,18 @@ function closeDialogue(newText){
     const dialogueDiv = document.getElementById('dialogue');
     dialogueDiv.style.display = 'none';
 }
+
+
+// ---------------
+
 function addComponent() {
+    const lastChild = document.getElementById('stage'+stage.toString()).lastElementChild;
+    lastChild?document.getElementById('stage'+stage.toString()).removeChild(lastChild):'';
     const code = document.getElementById('editor').value;
     const element = document.createElement('div');
     element.className = 'game-object';
     element.innerHTML = code;
-    document.getElementById('game-world').appendChild(element);
+    document.getElementById('stage'+stage.toString()).appendChild(element);
 }
 
 function saveToInventory() {
