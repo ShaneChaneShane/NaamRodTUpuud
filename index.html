@@ -12,8 +12,7 @@
     <h1>Code Manipulation Game</h1>
     <div id="game-world">
         <div id="main-menu" class="stage" >
-            <div id="logo">
-                <h1>LOGO</h1>
+            <div id="logo" style="height:150px">
             </div>
             <div style="height: 80px;"></div>
             <button id="new-game" onclick="nextStage()">New Game</button>
@@ -21,15 +20,19 @@
         </div>
         <div id="stage1" class="stage">
             <div class="vilager" id="vilager1"
-                style="width: 24px; height: 24px; background-color: blue; position: absolute;  top:300px; left:100px;">
+                style="width: 24px; height: 24px; position: absolute;  top:224px; left:100px;">
             </div>
             <div class="vilager" id="vilager2"
-                style="width: 24px; height: 24px; background-color: rosybrown; position: absolute; top:300px; left:130px;">
+                style="width: 24px; height: 24px; position: absolute; top:224px; left:130px;">
             </div>
             
             <div id="stage-game-object1" 
             class="gameobject" 
-            style="background-color: black; width:750px; height: 50px; top:350px; left:0px">
+            style="background-color: transparent; width:253px; height: 152px; bottom:0px; left:0px">
+            </div>
+            <div id="stage-game-object2" 
+            class="gameobject" 
+            style="background-color: transparent; width:253px; height: 152px; bottom:0px; right:0px">
             </div>
             <!-- create more div with class gameobject to make the map for user to add bridge pls-->
             <button onclick="villagersMove()" style=" position: absolute; left: 100px; top: 30px;">Start</button>
@@ -48,6 +51,7 @@
             </div>
             <div>
                 <!-- button to press next -->
+                 <button style="top:110px; left:225px">next</button>
             </div>
         </div>
 

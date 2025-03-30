@@ -10,30 +10,16 @@ let isVillagerMoving = false;
 let villagers = [
     {
         initPosX: 100,
-        initPosY: 300,
+        initPosY: 224,
         posX: 100,
-        posY: 300,
+        posY: 224,
         velocityY: 0,
     },
     {
         initPosX: 180,
-        initPosY: 300,
+        initPosY: 224,
         posX: 180,
-        posY: 300,
-        velocityY: 0,
-    },
-    {
-        initPosX: 260,
-        initPosY: 300,
-        posX: 260,
-        posY: 300,
-        velocityY: 0,
-    },
-    {
-        initPosX: 340,
-        initPosY: 300,
-        posX: 340,
-        posY: 300,
+        posY: 224,
         velocityY: 0,
     },
 ];
@@ -153,6 +139,7 @@ function villagersMove() {
             v.posY = v.initPosY;
             v.velocityY = 0;
         });
+        console.log('RENDER');
     }
 
     isVillagerMoving = true;
@@ -180,18 +167,21 @@ function villagersMove() {
             // **Check for right wall collision**
             if (v.posX >= gameRight) {
                 v.posX = gameRight;
+                isOnGround = true;
             }
 
             // **Check collision with user-created objects**
             obstacles ? 
             obstacles.forEach(obstacle => {
-                // console.log("OBS");
-                if (checkCollision(v, obstacle)) {
-                    v.posY -= v.velocityY; // Move back to avoid overlap
-                    if (obstacle.id == 'user-game-object') {
-                        v.velocityY = 0;       // Stop downward movement
-                        isOnGround = true;     // Consider it grounded
-                    }
+                let collisionSide = checkCollision(v, obstacle);
+
+                if (collisionSide === "left" || collisionSide === "right") {
+                  v.posX -= v.velocityX; // Revert X movement
+                  v.velocityX = 0; // Stop horizontal movement
+                }
+                else if (collisionSide === "bottom") {
+                  v.posY -= v.velocityY; // Revert Y movement
+                  v.velocityY = 0; // Stop downward movement
                 }
             }):'';
 
@@ -207,18 +197,35 @@ function villagersMove() {
     }
 }
 
-// **Collision Detection Function**
-function checkCollision(villager, obstacle) {
-    let vRect = villager.element.getBoundingClientRect();
-    let oRect = obstacle.getBoundingClientRect();
 
-    return !(
-        vRect.right < oRect.left ||
-        vRect.left > oRect.right ||
-        vRect.bottom < oRect.top ||
-        vRect.top > oRect.bottom
-    );
-}
+// Improved Collision Detection Function
+function checkCollision(villager, obstacle) {
+    const vRect = villager.element.getBoundingClientRect();
+    const oRect = obstacle.getBoundingClientRect();
+  
+    if (
+      vRect.right > oRect.left && // Villager’s right side is inside the obstacle
+      vRect.left < oRect.right && // Villager’s left side is inside the obstacle
+      vRect.bottom > oRect.top && // Villager’s bottom side is inside the obstacle
+      vRect.top < oRect.bottom    // Villager’s top side is inside the obstacle
+    ) {
+      // Determine the collision side
+      let fromTop = vRect.bottom - oRect.top;  // Distance villager moved from top
+      let fromBottom = oRect.bottom - vRect.top; // Distance villager moved from bottom
+      let fromLeft = vRect.right - oRect.left; // Distance villager moved from left
+      let fromRight = oRect.right - vRect.left; // Distance villager moved from right
+  
+      let minDistance = Math.min(fromTop, fromBottom, fromLeft, fromRight);
+  
+      if (minDistance === fromTop) return "bottom";  // Hits the ground
+      if (minDistance === fromBottom) return "top";  // Hits ceiling
+      if (minDistance === fromLeft) return "right";  // Hits left wall
+      if (minDistance === fromRight) return "left";  // Hits right wall
+    }
+  
+    return null; // No collision
+  }
+  
 function update() {
     document.querySelectorAll('.stage').forEach(stageDiv => {
         stageDiv.style.display = 'none';

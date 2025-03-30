@@ -43,6 +43,21 @@ button:active {
     position: relative;
 }
 
+#vilager1 {
+    background-color: transparent;
+    background-image: url('assets/vill1.png');
+    background-position: center;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+}
+#vilager2 {
+    background-color: transparent;
+    background-image: url('assets/vill2.png');
+    background-position: center;
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+}
+
 .gameOverlay {
     display: none;
     position: absolute;
@@ -82,18 +97,22 @@ button:active {
     display: none;
     width: 650px;
     height: 200px;
-    background-color: transparent;
+    background-color: rgb(247, 202, 202);
     position: absolute;
+    border-radius: 15px;
     top: 300px;
     left: 50px;
 }
 
 #dialogueSprite {
     width: 200px;
-    height: 400px;
-    background-color: salmon;
+    height: 200px;
+    background-color: transparent;
+    background-image: url('assets/Villager1Portrait.png');
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
     position: absolute;
-    top: -210px;
+    top: -200px;
     left: 0px;
 }
 
@@ -104,7 +123,7 @@ button:active {
     width: 650px;
     height: 180px;
     transform: translate(-50%, -50%);
-    background-color: firebrick;
+    background-color: transparent;
 }
 
 .stage {
@@ -127,10 +146,12 @@ button:active {
     height: 100%;
     width: 100%;
     background-color: green;
+    background-image: url('assets/MainMenu.jpg');
 }
 
 #stage1 {
     background-color: aqua;
+    background-image: url('assets/stage1Background.png');
 }
 
 #stage2 {
