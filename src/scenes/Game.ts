@@ -36,25 +36,27 @@ export default class Game extends Phaser.Scene
 
         this.anims.create({
             key:'charFront',
-            frames: 'charFront.png'
+            frames: [{key:'charTiles', frame: 'charFront.png'}]
         })
 
         this.anims.create({
             key:'charBack',
-            frames: 'charBack.png'
+            frames: [{key:'charTiles', frame: 'charBack.png'}]
         })
 
         this.anims.create({
             key:'charRight',
-            frames: 'charRight.png'
+            frames: [{key:'charTiles', frame: 'charRight.png'}]
         })
 
         this.anims.create({
             key:'charLeft',
-            frames: 'charLeft.png'
+            frames: [{key:'charTiles', frame: 'charLeft.png'}]
         })
 
-        this.chara.play('charFront')
+        this.chara.anims.play('charFront');
+
+        this.physics.add.collider(this.chara, wallsLayer);
     }
 
     update(time: number, delta: number): void {
@@ -64,25 +66,25 @@ export default class Game extends Phaser.Scene
 
         // left button
         if(this.cursors.left?.isDown) {
-            this.chara.play('charLeft')
+            this.chara.anims.play('charLeft')
             this.chara.setVelocity(-speed * delta, 0)
         }
 
         // right button
         else if(this.cursors.right?.isDown) {
-            this.chara.play('charRight')
+            this.chara.anims.play('charRight')
             this.chara.setVelocity(speed * delta, 0)
         }
 
         // up button
         else if(this.cursors.up?.isDown) {
-            this.chara.play('charBack')
+            this.chara.anims.play('charBack')
             this.chara.setVelocity(0, -speed * delta)
         }
 
         // down button
         else if(this.cursors.down?.isDown) {
-            this.chara.play('charFront')
+            this.chara.anims.play('charFront')
             this.chara.setVelocity(0, speed * delta)
         }
 
