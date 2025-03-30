@@ -58,25 +58,28 @@ button:active {
     background-repeat: no-repeat;
 }
 
+
+.gameobject {
+    position: absolute;
+    border: none;
+}
 .gameOverlay {
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    opacity: 0;
-}
-
-.gameobject {
-    position: absolute;
-    border: none;
 }
 
 #levelEndOverlay {
-    width: 400px;
-    height: 200px;
-    background-color: rgba(200, 100, 0, 0.5);
+    width: 200px;
+    height: auto;
+    background-color: rgba(200, 100, 0, 0.821);
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;  
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: #3d3535;
 }
 
 #notice {
@@ -86,6 +89,7 @@ button:active {
     border-radius: 10px;
     background-color: rgba(9, 66, 131, 0.5);
     box-shadow: #3d3535;
+    opacity: 0;
 }
 
 #editor {

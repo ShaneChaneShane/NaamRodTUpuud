@@ -24,7 +24,6 @@ let villagers = [
     },
 ];
 let inventory = [];
-
 // ---------------
 function showDialogue(newText) {
     const dialogueDiv = document.getElementById('dialogue');
@@ -39,6 +38,8 @@ function closeDialogue(newText) {
     const dialogueDiv = document.getElementById('dialogue');
     dialogueDiv.style.display = 'none';
 }
+
+//----------------
 
 function fadeIn(element, duration) {
     let opacity = 0;
@@ -84,9 +85,26 @@ function showNotice(newText) {
     }, 1000);
 }
 
-function closeNotice(newText) {
+function closeNotice() {
     const dialogueDiv = document.getElementById('notice');
     dialogueDiv.style.display = 'none';
+}
+
+
+function showOverlay(newText) {
+    const noticeDiv = document.getElementById('levelEndOverlay');
+    noticeDiv.style.display='flex';
+    const noticeTextDiv = document.getElementById('levelEndOverlayText');
+    const paragraph = noticeTextDiv.querySelector('p');
+
+    if (paragraph) {
+        paragraph.innerText = newText; // Change the text
+    }
+}
+
+function closeOverlay() {
+    const noticeDiv = document.getElementById('levelEndOverlay');
+    noticeDiv.style.display='none';
 }
 
 
@@ -133,6 +151,7 @@ function nextStage() {
 }
 
 function villagersMove() {
+    closeOverlay();
     if (isOnGround) {
         villagers.forEach(v => {
             v.posX = v.initPosX;
@@ -168,6 +187,7 @@ function villagersMove() {
             if (v.posX >= gameRight) {
                 v.posX = gameRight;
                 isOnGround = true;
+                showOverlay('You win!!!\nReady to help out more humans with your power? >:)');
             }
 
             // **Check collision with user-created objects**
@@ -226,6 +246,8 @@ function checkCollision(villager, obstacle) {
     return null; // No collision
   }
   
+
+  let firstTime = true;
 function update() {
     document.querySelectorAll('.stage').forEach(stageDiv => {
         stageDiv.style.display = 'none';
@@ -244,6 +266,10 @@ function update() {
                 villagers[i].element = el;
                 i++;
             });
+            if(firstTime){
+                showDialogue('Hello dear god! Please create bridge for us to go home. We\'re stuck :(');
+                firstTime = false;
+            }
         }
     } else if (stage == 2) {
 

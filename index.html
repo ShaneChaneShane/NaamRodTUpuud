@@ -16,7 +16,7 @@
             </div>
             <div style="height: 80px;"></div>
             <button id="new-game" onclick="nextStage()">New Game</button>
-            <button id="leaderboard" onclick="showNotice('This is not implemented yet in demo ♥')">Leaderboard</button>
+            <button id="leaderboard" onclick="showNotice('This is not implemented yet in demo ♥')">Achievement</button>
         </div>
         <div id="stage1" class="stage">
             <div class="vilager" id="vilager1"
@@ -47,22 +47,22 @@
 
             </div>
             <div id="dialogueText">
-                <p>test I'm text</p>
+                <p style="color:darkslategrey;"></p>
             </div>
             <div>
                 <!-- button to press next -->
-                 <button style="top:110px; left:225px">next</button>
+                 <button onclick="closeDialogue()" style="top:110px; left:225px">next</button>
             </div>
         </div>
 
         <div class="gameOverlay" id="levelEndOverlay">
             <div id="levelEndOverlayText">
-                <p>test I'm text</p>
+                <p></p>
             </div>
         </div>
         <div class="gameOverlay" id="notice">
             <div id="noticeText">
-                <p>test I'm text</p>
+                <p></p>
             </div>
         </div>
     </div>
@@ -73,11 +73,11 @@
     <button onclick="saveToInventory()">Save to Inventory</button>
     <h2>Inventory</h2>
     <div id="inventory"></div>
-    <button onclick="nextStage()">Next Stage</button>
+    <!-- <button onclick="nextStage()">Next Stage</button>
     <div></div>
-    debug
-    <button onclick="showDialogue('test')">Open Dialogue Box</button>
-    <button onclick="closeDialogue('test')">Close Dialogue Box</button>
+    debug -->
+    <!-- <button onclick="showOverlay('test')">Open Dialogue Box</button>
+    <button onclick="closeDialogue('test')">Close Dialogue Box</button> -->
     <script src="main.js"></script>
 </body>
 
