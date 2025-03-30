@@ -57,6 +57,8 @@ export default class Game extends Phaser.Scene
         this.chara.anims.play('charFront');
 
         this.physics.add.collider(this.chara, wallsLayer);
+
+        this.cameras.main.startFollow(this.chara, true)
     }
 
     update(time: number, delta: number): void {
